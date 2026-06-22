@@ -1,0 +1,8 @@
+# Sačuvani API tokeni (lokalna konfiguracija)
+*.token
+.env
+.env.local
+
+# OS fajlovi
+.DS_Store
+Thumbs.db
