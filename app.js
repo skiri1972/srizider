@@ -142,9 +142,10 @@ const recipes = [
  * Zameni "YOUR_HF_TOKEN" sa svojim tokenom za pravu AI analizu.
  * Ako ostaviš prazno, koristiće se mock (simulirani) podaci.
  */
-// Lokalni token - podeljen da GitHub ne prepozna
-// Spoji dva dela: "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"
-const HF_API_TOKEN = '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';
+// Token se učitava iz config.js fajla (koji je u .gitignore)
+// Ako config.js ne postoji, token je prazan -> koristi se simulacija
+// Token možeš dodati i kroz ⚙️ Podešavanja u aplikaciji (čuva se u localStorage)
+const HF_API_TOKEN = typeof HF_API_TOKEN !== 'undefined' ? HF_API_TOKEN : '';
 
 /** Hugging Face model za prepoznavanje objekata na slikama */
 const HF_MODEL = 'google/vit-base-patch16-224';

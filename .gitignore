@@ -1,3 +1,6 @@
+# Konfiguracioni fajl sa API tokenom (NE PUSH-OVATI!)
+config.js
+
 # Sačuvani API tokeni (lokalna konfiguracija)
 *.token
 .env
