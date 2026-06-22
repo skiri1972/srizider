@@ -23,8 +23,8 @@
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge" id="notificationBadge">1</span>
                 </button>
-                <button class="profile-btn" aria-label="Profil">
-                    <i class="fas fa-user-circle"></i>
+                <button class="profile-btn" id="settingsBtn" aria-label="Podešavanja">
+                    <i class="fas fa-cog"></i>
                 </button>
             </div>
         </header>
@@ -43,6 +43,8 @@
                 <span class="scan-btn-text">Slikaj frižider</span>
                 <span class="scan-btn-sub">AI će prepoznati namirnice</span>
             </button>
+            <!-- Skriveni input za kameru / upload slike -->
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
         </section>
 
         <!-- SEKCUA: U MOM FRIŽIDERU -->
@@ -90,6 +92,27 @@
                 <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
                 <div class="modal-body" id="modalBody">
                     <!-- Dinamički sadržaj recepta -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== MODAL ZA PODEŠAVANJA ====== -->
+        <div class="modal-overlay" id="settingsOverlay">
+            <div class="modal-content">
+                <button class="modal-close" id="settingsClose"><i class="fas fa-times"></i></button>
+                <div class="modal-body">
+                    <h2 class="modal-recipe-title">⚙️ Podešavanja</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 16px;">
+                        Unesi svoj Hugging Face API token za pravu AI analizu slika.
+                        <br><a href="https://huggingface.co/settings/tokens" target="_blank" style="color: var(--green-primary);">Dobij besplatni token</a>
+                    </p>
+                    <div class="add-item-row" style="margin-bottom: 12px;">
+                        <input type="text" class="add-item-input" id="apiTokenInput" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="font-size:0.8rem;font-family:monospace;">
+                        <button class="add-item-btn" id="apiTokenSave" style="width:auto;padding:0 16px;font-size:0.8rem;">Sačuvaj</button>
+                    </div>
+                    <div id="apiStatus" style="font-size:0.82rem;color:var(--text-muted);padding:8px 0;">
+                        Status: <span id="apiStatusText">nije podešen</span>
+                    </div>
                 </div>
             </div>
         </div>
