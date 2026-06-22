@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pametni planer obroka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ====== GLAVNI DASHBOARD ====== -->
+    <div id="app" class="app-container">
+
+        <!-- ZAGLAVLJE -->
+        <header class="header">
+            <div class="header-left">
+                <i class="fas fa-utensils header-logo"></i>
+                <h1 class="header-title">Planer obroka</h1>
+            </div>
+            <div class="header-right">
+                <button class="notification-btn" id="notificationBtn" aria-label="Obaveštenja">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notificationBadge">1</span>
+                </button>
+                <button class="profile-btn" aria-label="Profil">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- BANER OBAVEŠTENJA -->
+        <div class="alert-banner" id="alertBanner">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text" id="alertText">Mleko ističe za 2 dana! Iskoristi ga u receptu ispod.</span>
+            <button class="alert-close" id="alertClose"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- DUGME ZA SKENIRANJE -->
+        <section class="scan-section">
+            <button class="scan-btn" id="scanBtn">
+                <i class="fas fa-camera scan-btn-icon"></i>
+                <span class="scan-btn-text">Slikaj frižider</span>
+                <span class="scan-btn-sub">AI će prepoznati namirnice</span>
+            </button>
+        </section>
+
+        <!-- SEKCUA: U MOM FRIŽIDERU -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-kitchen-set"></i> U mom frižideru</h2>
+                <span class="section-count" id="itemsCount">0</span>
+            </div>
+            <div class="tags-container" id="tagsContainer">
+                <!-- Dinamički generisani tagovi -->
+            </div>
+            <div class="add-item-row">
+                <input type="text" class="add-item-input" id="addItemInput" placeholder="Dodaj namirnicu..." maxlength="30">
+                <button class="add-item-btn" id="addItemBtn"><i class="fas fa-plus"></i></button>
+            </div>
+        </section>
+
+        <!-- SEKCUA: PREDLOZI ZA RUČAK -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Predlozi za ručak</h2>
+            </div>
+            <div class="recipes-grid" id="recipesGrid">
+                <!-- Dinamički generisane kartice recepata -->
+            </div>
+        </section>
+
+        <!-- ====== OVERLAY ZA SKENIRANJE ====== -->
+        <div class="scan-overlay" id="scanOverlay">
+            <div class="scan-overlay-content">
+                <div class="scan-frame">
+                    <div class="scan-line" id="scanLine"></div>
+                    <i class="fas fa-camera scan-frame-icon"></i>
+                </div>
+                <p class="scan-status">AI analizira namirnice...</p>
+                <div class="scan-progress-bar">
+                    <div class="scan-progress-fill" id="scanProgressFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== MODAL ZA RECEPT ====== -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+                <div class="modal-body" id="modalBody">
+                    <!-- Dinamički sadržaj recepta -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
