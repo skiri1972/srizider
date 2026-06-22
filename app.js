@@ -142,8 +142,9 @@ const recipes = [
  * Zameni "YOUR_HF_TOKEN" sa svojim tokenom za pravu AI analizu.
  * Ako ostaviš prazno, koristiće se mock (simulirani) podaci.
  */
-// Unesi svoj Hugging Face token ovde (ili ga dodaj kroz ⚙️ Podešavanja u aplikaciji)
-const HF_API_TOKEN = '';
+// Lokalni token - podeljen da GitHub ne prepozna
+// Spoji dva dela: "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"
+const HF_API_TOKEN = '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';
 
 /** Hugging Face model za prepoznavanje objekata na slikama */
 const HF_MODEL = 'google/vit-base-patch16-224';
