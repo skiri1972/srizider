@@ -142,10 +142,9 @@ const recipes = [
  * Zameni "YOUR_HF_TOKEN" sa svojim tokenom za pravu AI analizu.
  * Ako ostaviš prazno, koristiće se mock (simulirani) podaci.
  */
-// Token se učitava iz config.js fajla (koji je u .gitignore)
-// Ako config.js ne postoji, token je prazan -> koristi se simulacija
-// Token možeš dodati i kroz ⚙️ Podešavanja u aplikaciji (čuva se u localStorage)
-const HF_API_TOKEN = typeof HF_API_TOKEN !== 'undefined' ? HF_API_TOKEN : '';
+// Token se unosi kroz ⚙️ Podešavanja u aplikaciji (čuva se u localStorage)
+// Ako nije unet, koristi se simulacija umesto prave AI analize
+const HF_API_TOKEN = '';
 
 /** Hugging Face model za prepoznavanje objekata na slikama */
 const HF_MODEL = 'google/vit-base-patch16-224';
