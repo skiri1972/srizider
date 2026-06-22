@@ -146,8 +146,14 @@ const recipes = [
 // Ako nije unet, koristi se simulacija umesto prave AI analize
 const HF_API_TOKEN = '';
 
-/** Hugging Face model za prepoznavanje objekata na slikama */
-const HF_MODEL = 'google/vit-base-patch16-224';
+/**
+ * Hugging Face model za prepoznavanje objekata na slikama.
+ * Preporučeni modeli:
+ * - 'microsoft/resnet-50' (brz, pouzdan, dobar za hranu)
+ * - 'google/vit-base-patch16-224' (ViT, precizniji ali sporiji)
+ * - 'nateraw/food' (specijalizovan za hranu)
+ */
+const HF_MODEL = 'microsoft/resnet-50';
 
 /** Mapa između AI prepoznatih labela i naših naziva namirnica */
 const aiLabelToItemMap = {
@@ -640,6 +646,7 @@ async function startScanWithImage(imageFile) {
             const base64Data = imageUrl.split(',')[1];
 
             // Pošalji na Hugging Face API sa aktivnim tokenom
+            // Napomena: Prvi zahtev može trajati 10-20s dok se model "budí" (cold start)
             const predictions = await analyzeImageWithAI(base64Data, activeToken);
 
             // Ekstrahuj prehrambene artikle
@@ -653,10 +660,11 @@ async function startScanWithImage(imageFile) {
             detectedItems = ['Sir', 'Tikvice', 'Crni luk'];
         }
     } catch (error) {
-        console.error('AI analiza nije uspela:', error);
-        // Fallback na mock podatke ako API ne radi
-        scanStatus.textContent = '⚠️ AI servis nije dostupan. Koristim lokalnu analizu...';
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        console.error('❌ AI analiza nije uspela:', error);
+        // Prikaži tačnu grešku korisniku
+        const errorMsg = error.message || 'Nepoznata greška';
+        scanStatus.textContent = `⚠️ ${errorMsg}. Koristim simulaciju...`;
+        await new Promise(resolve => setTimeout(resolve, 2000));
         detectedItems = ['Sir', 'Tikvice', 'Crni luk'];
     }
 
